@@ -1,3 +1,4 @@
+import { MuiThemeProvider } from '@/components/Mui/MuiThemeProvider';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -11,8 +12,10 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body>{children}</body>
+		<html lang="ja">
+			<body>
+				<MuiThemeProvider>{children}</MuiThemeProvider>
+			</body>
 		</html>
 	);
 }

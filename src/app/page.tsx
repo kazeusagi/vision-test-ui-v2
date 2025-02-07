@@ -1,3 +1,9 @@
+import { Paper } from '@mui/material';
+
 export default function Home() {
-	return <></>;
+	return (
+		<>
+			<Paper>Hello</Paper>
+		</>
+	);
 }
