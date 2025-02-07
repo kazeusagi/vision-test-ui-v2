@@ -8,12 +8,9 @@
       "extensions": [
         "ms-azuretools.vscode-docker",
         "GitHub.copilot",
-        "esbenp.prettier-vscode",
-        "dbaeumer.vscode-eslint",
         "formulahendry.auto-rename-tag",
         "oderwat.indent-rainbow",
-        "hediet.vscode-drawio",
-        "bierner.markdown-preview-github-styles"
+        "biomejs.biome"
       ]
     }
   }
