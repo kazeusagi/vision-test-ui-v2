@@ -7,14 +7,14 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": []
+		"include": ["src/**/*"]
 	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab"
 	},
 	"organizeImports": {
-		"enabled": true
+		"enabled": false
 	},
 	"linter": {
 		"enabled": true,
