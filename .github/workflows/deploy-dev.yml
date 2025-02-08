@@ -5,18 +5,18 @@ on:
     branches: [develop, main]
 
 env:
-  ENVIRONMENT: dev
   AWS_REGION: ${{ secrets.AWS_REGION }}
   ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
   ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
   AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
   IMAGE_TAG: latest
+  DOCKERFILE: Dockerfile.dev
 
 jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
-    environment: ${{ vars.ENVIRONMENT }}
+    environment: dev
     permissions:
       contents: 'read'
       id-token: 'write'
@@ -33,5 +33,5 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
       - name: Build, tag, and push docker image to Amazon ECR
         run: |
-          docker build -t ${{env.ECR_REGISTRY}}/${{env.ECR_REPOSITORY}}:${{env.IMAGE_TAG}} -f Dockerfile.${{env.ENVIRONMENT}} .
+          docker build -t ${{env.ECR_REGISTRY}}/${{env.ECR_REPOSITORY}}:${{env.IMAGE_TAG}} -f ${{env.DOCKERFILE}} .
           docker push ${{env.ECR_REGISTRY}}/${{env.ECR_REPOSITORY}}:${{env.IMAGE_TAG}}
