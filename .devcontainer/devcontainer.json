@@ -1,5 +1,5 @@
 {
-  "name": "Vision Test UI",
+  "name": "Vision Test UI v2",
   "dockerComposeFile": "./compose.yml",
   "service": "app",
   "workspaceFolder": "/home/user/app",
