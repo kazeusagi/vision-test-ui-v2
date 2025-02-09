@@ -1,5 +1,6 @@
 import { MuiThemeProvider } from '@/components/Mui/MuiThemeProvider';
 import type { Metadata } from 'next';
+import { ToastContainer } from 'react-toastify';
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -12,8 +13,9 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="ja" suppressHydrationWarning>
+		<html lang='ja' suppressHydrationWarning>
 			<body>
+				<ToastContainer theme='dark' position='top-center' />
 				<MuiThemeProvider>{children}</MuiThemeProvider>
 			</body>
 		</html>

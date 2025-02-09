@@ -1,11 +1,6 @@
 'use client';
 
-import {
-	createTheme,
-	CssBaseline,
-	GlobalStyles,
-	ThemeProvider,
-} from '@mui/material';
+import { createTheme, CssBaseline, GlobalStyles, ThemeProvider } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
 type Props = {
@@ -17,16 +12,12 @@ export function MuiThemeProvider({ children }: Props) {
 		colorSchemes: {
 			light: {
 				palette: {
-					background: {
-						default: '#aaaaaa',
-					},
+					background: {},
 				},
 			},
 			dark: {
 				palette: {
-					background: {
-						default: '#333333',
-					},
+					background: {},
 				},
 			},
 		},
@@ -34,7 +25,7 @@ export function MuiThemeProvider({ children }: Props) {
 
 	return (
 		<AppRouterCacheProvider>
-			<ThemeProvider theme={theme}>
+			<ThemeProvider theme={theme} defaultMode='dark'>
 				<CssBaseline />
 				<GlobalStyles
 					styles={{
