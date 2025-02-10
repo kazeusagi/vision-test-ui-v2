@@ -24,7 +24,6 @@ export const dpcmAtom = atom((get) => {
 	// getter: dpiをdpcm(dot per cm)に変換して返す
 	return get(dpiAtom) / 2.54;
 });
-
 export const dpmmAtom = atom((get) => {
 	// getter: dpiをdpmm(dot per mm)に変換して返す
 	return get(dpiAtom) / 25.4;
