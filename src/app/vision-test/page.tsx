@@ -1,23 +1,22 @@
 'use client';
 
+import { AuthContainer } from '@/components/Auth';
 import { LandoltRing } from '@/components/LandoltRing/LandoltRing';
 import { ToggleTheme } from '@/components/Mui';
 import { Ruler } from '@/components/Ruler';
 import { distanceAtom, visionAtom } from '@/utils/atoms';
-import { Box, Input, TextField } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 import { useAtom } from 'jotai';
 
-export default function Home() {
+export default function Page() {
 	const [distance, setDistance] = useAtom(distanceAtom);
 	const [vision, setVision] = useAtom(visionAtom);
 
 	return (
 		<Box height='100dvh' display='flex' flexDirection='column' p={2} gap={2}>
-			{/* <AuthContainer /> */}
-
+			<AuthContainer />
 			<Box>
 				<TextField type='number' label='距離(m)' value={distance} onChange={onChangeDistance} />
-				<Input type='number' />
 				<TextField type='number' label='視力' value={vision} onChange={onChangeVision} />
 				<ToggleTheme />
 			</Box>
