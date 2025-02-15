@@ -2,6 +2,7 @@
 
 import { colorSchemeAtom, distanceAtom, dpmmAtom, visionAtom } from '@/utils/atoms';
 import { getLandoltDiameterMm, mmToPx } from '@/utils/landolt';
+import { Box } from '@mui/material';
 import { useAtom, useAtomValue } from 'jotai';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -20,8 +21,6 @@ export function LandoltRing() {
 		const landoltDiameterMm = getLandoltDiameterMm({ distance, vision });
 		const landoltDiameterPx = mmToPx(landoltDiameterMm, dpmm);
 		setLandoltDiameterPx(landoltDiameterPx);
-		console.log(`${landoltDiameterMm}mm`);
-		console.log(`${landoltDiameterPx}px`);
 	}, [distance, vision]);
 
 	useEffect(() => {
@@ -29,15 +28,26 @@ export function LandoltRing() {
 	}, [landoltDiameterPx]);
 
 	return (
-		<Image
-			src={`/landoltRing_${colorScheme}.png`}
-			width={landoltDiameterPx}
-			height={landoltDiameterPx}
-			alt=''
-			style={{
-				transform: `rotate(${direction}deg)`,
-				transition: 'transform 0.5s',
-			}}
-		/>
+		<Box
+			width='20rem'
+			height='20rem'
+			display='flex'
+			justifyContent='center'
+			alignItems='center'
+			border='1px solid'
+			borderColor='divider'
+			overflow='hidden'
+		>
+			<Image
+				src={`/landoltRing_${colorScheme}.png`}
+				width={landoltDiameterPx}
+				height={landoltDiameterPx}
+				alt=''
+				style={{
+					transform: `rotate(${direction}deg)`,
+					transition: 'transform 0.5s',
+				}}
+			/>
+		</Box>
 	);
 }

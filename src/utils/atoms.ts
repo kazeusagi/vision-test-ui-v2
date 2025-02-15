@@ -2,6 +2,7 @@ import type { Resolution } from '@/types/resolution';
 import { atom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 import type { Session } from 'next-auth';
+import { atomWithToggle } from './jotai';
 
 // 認証
 export const sessionAtom = atom<Session | null>(null);
@@ -17,6 +18,10 @@ export const visionAtom = atom(1);
 
 // Theme
 export const colorSchemeAtom = atomWithStorage<'light' | 'dark'>('colorScheme', 'light');
+
+// Loading
+export const loadingStatusAtom = atom<'idle' | 'loading' | 'success' | 'error'>('idle');
+export const aaAtom = atomWithToggle(false);
 
 // 拡張atom
 // 認証

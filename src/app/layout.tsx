@@ -1,4 +1,5 @@
 import { AuthContainer } from '@/components/Auth';
+import { LoadingBar } from '@/components/Loading';
 import { MuiThemeProvider } from '@/components/Mui/MuiThemeProvider';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
@@ -21,6 +22,7 @@ export default async function RootLayout({
 				<Suspense>
 					<MuiThemeProvider>
 						<AuthContainer />
+						<LoadingBar />
 						<main>{children}</main>
 					</MuiThemeProvider>
 				</Suspense>
