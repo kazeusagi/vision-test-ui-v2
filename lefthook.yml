@@ -3,3 +3,5 @@ pre-commit:
   jobs:
     - name: lint
       run: bun run lint
+    - name: build
+      run: bun run build

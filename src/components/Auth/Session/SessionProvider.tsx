@@ -2,20 +2,22 @@
 
 import { sessionAtom } from '@/utils/atoms';
 import { useSetAtom } from 'jotai';
-import type { Session } from 'next-auth';
+import { getSession } from 'next-auth/react';
 import { useEffect } from 'react';
 
-type Props = {
-	session: Session | null;
-};
-
-export function SessionProvider({ session }: Props) {
+export function SessionProvider() {
 	const setSession = useSetAtom(sessionAtom);
 
 	useEffect(() => {
-		setSession(session);
-		console.log(session);
-	}, [session]);
+		init();
+	}, []);
 
 	return <></>;
+
+	// sessionの取得とatomの更新
+	async function init() {
+		const session = await getSession();
+		setSession(session);
+		console.log(session);
+	}
 }

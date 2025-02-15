@@ -19,6 +19,10 @@ export const visionAtom = atom(1);
 export const colorSchemeAtom = atomWithStorage<'light' | 'dark'>('colorScheme', 'dark');
 
 // 拡張atom
+// 認証
+export const isSignedInAtom = atom((get) => get(sessionAtom) !== null);
+
+// ランドルト環の大きさを算出するのに必要
 export const dpiAtom = atom((get) => {
 	// getter: resolutionとdisplayInchからdpiを算出して返す
 	const diagonalPx = Math.sqrt(
