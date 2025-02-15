@@ -16,7 +16,7 @@ export const distanceAtom = atomWithStorage('distance', 1);
 export const visionAtom = atom(1);
 
 // Theme
-export const colorSchemeAtom = atomWithStorage<'light' | 'dark'>('colorScheme', 'dark');
+export const colorSchemeAtom = atomWithStorage<'light' | 'dark'>('colorScheme', 'light');
 
 // 拡張atom
 // 認証
