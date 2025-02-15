@@ -1,15 +1,15 @@
 'use client';
 
 import { Button } from '@mui/material';
-import { signIn } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 import { toast } from 'react-toastify';
 
-export function SignIn() {
-	return <Button onClick={onClick}>Google</Button>;
+export function SignOutButton() {
+	return <Button onClick={onClick}>Sign Out</Button>;
 
 	function onClick() {
 		try {
-			signIn('google');
+			signOut();
 		} catch (error) {
 			if (error instanceof Error) {
 				toast.error(error.message);

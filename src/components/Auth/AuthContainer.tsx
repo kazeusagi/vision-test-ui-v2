@@ -1,15 +1,17 @@
-import { auth, signIn } from '@/utils/auth';
-import { Box, Button } from '@mui/material';
+'use server';
+
+import { Box } from '@mui/material';
+import { AuthController } from './Controller';
+import { SessionManager } from './Session';
 
 export async function AuthContainer() {
-	const session = await auth();
 	return (
 		<Box>
-			<Button onClick={onClickSignIn}>aa</Button>
+			{/* Sessionの取得はサーバーサイドでしか動作しない */}
+			<SessionManager />
+
+			{/* 認証のコントロールはクライアントサイドで行う */}
+			<AuthController />
 		</Box>
 	);
-
-	function onClickSignIn() {
-		signIn('google');
-	}
 }

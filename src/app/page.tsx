@@ -13,8 +13,6 @@ export default function Home() {
 
 	return (
 		<Box height='100dvh' display='flex' flexDirection='column' p={2} gap={2}>
-			{/* <AuthContainer /> */}
-
 			<Box>
 				<TextField type='number' label='距離(m)' value={distance} onChange={onChangeDistance} />
 				<Input type='number' />

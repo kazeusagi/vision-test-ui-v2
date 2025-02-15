@@ -1,5 +1,7 @@
+import { AuthContainer } from '@/components/Auth';
 import { MuiThemeProvider } from '@/components/Mui/MuiThemeProvider';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
 
 export const metadata: Metadata = {
@@ -15,9 +17,13 @@ export default async function RootLayout({
 	return (
 		<html lang='ja' suppressHydrationWarning>
 			<body>
-				{/* <AuthContainer /> */}
 				<ToastContainer theme='dark' position='top-center' />
-				<MuiThemeProvider>{children}</MuiThemeProvider>
+				<Suspense>
+					<MuiThemeProvider>
+						<AuthContainer />
+						<main>{children}</main>
+					</MuiThemeProvider>
+				</Suspense>
 			</body>
 		</html>
 	);

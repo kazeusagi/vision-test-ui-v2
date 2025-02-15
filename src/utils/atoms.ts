@@ -1,7 +1,12 @@
 import type { Resolution } from '@/types/resolution';
 import { atom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
+import type { Session } from 'next-auth';
 
+// 認証
+export const sessionAtom = atom<Session | null>(null);
+
+// ランドルト環の大きさを算出するのに必要
 export const resolutionPxAtom = atomWithStorage<Resolution>('resolutionPx', {
 	width: 1920,
 	height: 1080,
@@ -10,7 +15,8 @@ export const displayInchAtom = atomWithStorage('displayInch', 24.5);
 export const distanceAtom = atomWithStorage('distance', 1);
 export const visionAtom = atom(1);
 
-export const colorSchemeAtom = atomWithStorage<'light' | 'dark'>('colorScheme', 'light');
+// Theme
+export const colorSchemeAtom = atomWithStorage<'light' | 'dark'>('colorScheme', 'dark');
 
 // 拡張atom
 export const dpiAtom = atom((get) => {
