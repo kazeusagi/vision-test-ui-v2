@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 export function SignInButton() {
 	return (
-		<Button startIcon={<Google />} variant='outlined' onClick={onClick}>
+		<Button startIcon={<Google />} variant='outlined' onClick={onClick} fullWidth>
 			Sign in with Google
 		</Button>
 	);

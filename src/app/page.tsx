@@ -3,7 +3,7 @@
 import { LandoltRing } from '@/components/LandoltRing/LandoltRing';
 import { ToggleTheme } from '@/components/Mui';
 import { Ruler } from '@/components/Ruler';
-import { Sidebar } from '@/components/Sidebar';
+import { SettingsSidebar } from '@/components/Sidebar/SettingsSidebar';
 import { distanceAtom, loadingStatusAtom, visionAtom } from '@/utils/atoms';
 import { Box, Button, TextField } from '@mui/material';
 import { useAtom, useSetAtom } from 'jotai';
@@ -16,7 +16,7 @@ export default function Home() {
 
 	return (
 		<Box height='100dvh' display='flex' flexDirection='column' p={2} gap={2}>
-			<Sidebar anchor='left' />
+			<SettingsSidebar />
 			<Box>
 				<TextField type='number' label='距離(m)' value={distance} onChange={onChangeDistance} />
 				<TextField type='number' label='視力' value={vision} onChange={onChangeVision} />

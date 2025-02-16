@@ -23,6 +23,9 @@ export const colorSchemeAtom = atomWithStorage<'light' | 'dark'>('colorScheme', 
 export const loadingStatusAtom = atom<'idle' | 'loading' | 'success' | 'error'>('idle');
 export const aaAtom = atomWithToggle(false);
 
+// Sidebar
+export const settingsSidebarOpenAtom = atomWithToggle(false);
+
 // 拡張atom
 // 認証
 export const isSignedInAtom = atom((get) => get(sessionAtom) !== null);

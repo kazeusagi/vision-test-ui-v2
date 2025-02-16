@@ -5,7 +5,11 @@ import { signOut } from 'next-auth/react';
 import { toast } from 'react-toastify';
 
 export function SignOutButton() {
-	return <Button onClick={onClick}>Sign Out</Button>;
+	return (
+		<Button variant='outlined' onClick={onClick} fullWidth>
+			Sign Out
+		</Button>
+	);
 
 	function onClick() {
 		try {
