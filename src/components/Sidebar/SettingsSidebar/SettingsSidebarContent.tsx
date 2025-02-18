@@ -1,5 +1,6 @@
 import { AuthContainer } from '@/components/Auth';
 import { MyIconButton } from '@/components/Elements';
+import { DisplaySettingsForm } from '@/components/Form';
 import { settingsSidebarOpenAtom } from '@/utils/atoms';
 import { Close } from '@mui/icons-material';
 import { Box, Divider } from '@mui/material';
@@ -12,7 +13,7 @@ export function SettingsSidebarContent() {
 		<>
 			{/* Header */}
 			<Box display='flex' gap={1}>
-				<Box overflow='hidden'>
+				<Box flexGrow={1} overflow='hidden'>
 					<AuthContainer />
 				</Box>
 
@@ -24,6 +25,11 @@ export function SettingsSidebarContent() {
 			</Box>
 
 			<Divider />
+
+			{/* Content */}
+			<Box>
+				<DisplaySettingsForm />
+			</Box>
 		</>
 	);
 }

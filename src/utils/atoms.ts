@@ -21,7 +21,6 @@ export const colorSchemeAtom = atomWithStorage<'light' | 'dark'>('colorScheme', 
 
 // Loading
 export const loadingStatusAtom = atom<'idle' | 'loading' | 'success' | 'error'>('idle');
-export const aaAtom = atomWithToggle(false);
 
 // Sidebar
 export const settingsSidebarOpenAtom = atomWithToggle(false);

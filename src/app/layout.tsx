@@ -1,3 +1,4 @@
+import { SessionProvider } from '@/components/Auth';
 import { LoadingBar } from '@/components/Loading';
 import { MuiThemeProvider } from '@/components/Mui/MuiThemeProvider';
 import type { Metadata } from 'next';
@@ -18,6 +19,7 @@ export default async function RootLayout({
 		<html lang='ja' suppressHydrationWarning>
 			<body>
 				<ToastContainer theme='dark' position='top-center' />
+				<SessionProvider />
 				<Suspense>
 					<MuiThemeProvider>
 						<LoadingBar />

@@ -39,10 +39,11 @@ export function LandoltRing() {
 			overflow='hidden'
 		>
 			<Image
+				alt=''
 				src={`/landoltRing_${colorScheme}.png`}
 				width={landoltDiameterPx}
 				height={landoltDiameterPx}
-				alt=''
+				priority
 				style={{
 					transform: `rotate(${direction}deg)`,
 					transition: 'transform 0.5s',
