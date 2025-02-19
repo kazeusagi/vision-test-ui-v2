@@ -1,3 +1,4 @@
+import type { LandoltDirectionType, LandoltStandardType } from '@/types/landolt';
 import type { Resolution } from '@/types/resolution';
 import { atom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
@@ -17,7 +18,8 @@ export const distanceAtom = atomWithStorage('distance', 1);
 export const visionAtom = atom(1);
 
 // ランドルト環
-export const landoltDirectionAtom = atom<'up' | 'down' | 'left' | 'right'>('up');
+export const landoltDirectionAtom = atom<LandoltDirectionType>('up');
+export const landoltStandardAtom = atom<LandoltStandardType>('JIS');
 
 // Theme
 export const colorSchemeAtom = atomWithStorage<'light' | 'dark'>('colorScheme', 'light');

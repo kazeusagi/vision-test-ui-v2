@@ -1,12 +1,13 @@
 import { AuthContainer } from '@/components/Auth';
 import { MyIconButton } from '@/components/Elements';
 import { DisplaySettingsForm } from '@/components/Form';
-import { settingsSidebarOpenAtom } from '@/utils/atoms';
+import { landoltStandardAtom, settingsSidebarOpenAtom } from '@/utils/atoms';
 import { Close } from '@mui/icons-material';
 import { Box, Divider } from '@mui/material';
-import { useSetAtom } from 'jotai';
+import { useAtom, useSetAtom } from 'jotai';
 
 export function SettingsSidebarContent() {
+	const [landoltStandard, setLandoltStandard] = useAtom(landoltStandardAtom);
 	const toggle = useSetAtom(settingsSidebarOpenAtom);
 
 	return (
@@ -30,6 +31,10 @@ export function SettingsSidebarContent() {
 			<Box>
 				<DisplaySettingsForm />
 			</Box>
+
+			<Divider />
+
+			<Box>{/* <MySelect atom={'a'} options={LandoltStandardOptions} /> */}</Box>
 		</>
 	);
 }
