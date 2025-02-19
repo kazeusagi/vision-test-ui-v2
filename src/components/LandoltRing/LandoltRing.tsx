@@ -1,6 +1,12 @@
 'use client';
 
-import { colorSchemeAtom, distanceAtom, dpmmAtom, visionAtom } from '@/utils/atoms';
+import {
+	colorSchemeAtom,
+	distanceAtom,
+	dpmmAtom,
+	landoltDirectionAtom,
+	visionAtom,
+} from '@/utils/atoms';
 import { getLandoltDiameterMm, mmToPx } from '@/utils/landolt';
 import { Box } from '@mui/material';
 import { useAtom, useAtomValue } from 'jotai';
@@ -8,13 +14,13 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 export function LandoltRing() {
+	const [landoltDirection, setLandoltDirectionAtom] = useAtom(landoltDirectionAtom);
 	const [vision, setVision] = useAtom(visionAtom);
 	const colorScheme = useAtomValue(colorSchemeAtom);
 	const distance = useAtomValue(distanceAtom);
 	const dpmm = useAtomValue(dpmmAtom);
 
 	const [landoltDiameterPx, setLandoltDiameterPx] = useState(0);
-	const [direction, setDirection] = useState<number>(0);
 
 	// ランドルト環の大きさを計算
 	useEffect(() => {
@@ -24,7 +30,11 @@ export function LandoltRing() {
 	}, [distance, vision]);
 
 	useEffect(() => {
-		setDirection(Math.floor(Math.random() * 4) * 90);
+		const rand = Math.floor(Math.random() * 4);
+		if (rand === 0) setLandoltDirectionAtom('up');
+		if (rand === 1) setLandoltDirectionAtom('right');
+		if (rand === 2) setLandoltDirectionAtom('down');
+		if (rand === 3) setLandoltDirectionAtom('left');
 	}, [landoltDiameterPx]);
 
 	return (
@@ -45,10 +55,16 @@ export function LandoltRing() {
 				height={landoltDiameterPx}
 				priority
 				style={{
-					transform: `rotate(${direction}deg)`,
-					transition: 'transform 0.5s',
+					transform: `rotate(${getRotate()}deg)`,
 				}}
 			/>
 		</Box>
 	);
+
+	function getRotate() {
+		if (landoltDirection === 'up') return 0;
+		if (landoltDirection === 'right') return 90;
+		if (landoltDirection === 'down') return 180;
+		if (landoltDirection === 'left') return 270;
+	}
 }

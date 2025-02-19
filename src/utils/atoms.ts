@@ -16,6 +16,9 @@ export const displayInchAtom = atomWithStorage('displayInch', 24.5);
 export const distanceAtom = atomWithStorage('distance', 1);
 export const visionAtom = atom(1);
 
+// ランドルト環
+export const landoltDirectionAtom = atom<'up' | 'down' | 'left' | 'right'>('up');
+
 // Theme
 export const colorSchemeAtom = atomWithStorage<'light' | 'dark'>('colorScheme', 'light');
 

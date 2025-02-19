@@ -4,14 +4,14 @@ import { LandoltRing } from '@/components/LandoltRing/LandoltRing';
 import { ToggleTheme } from '@/components/Mui';
 import { Ruler } from '@/components/Ruler';
 import { SettingsSidebar } from '@/components/Sidebar/SettingsSidebar';
-import { distanceAtom, loadingStatusAtom, visionAtom } from '@/utils/atoms';
+import { distanceAtom, landoltDirectionAtom, loadingStatusAtom, visionAtom } from '@/utils/atoms';
 import { Box, Button, TextField } from '@mui/material';
-import { useAtom, useSetAtom } from 'jotai';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 
 export default function Home() {
 	const [distance, setDistance] = useAtom(distanceAtom);
 	const [vision, setVision] = useAtom(visionAtom);
-
+	const landoltDirection = useAtomValue(landoltDirectionAtom);
 	const setLoadingStatus = useSetAtom(loadingStatusAtom);
 
 	return (
@@ -27,8 +27,32 @@ export default function Home() {
 				<Button onClick={() => setLoadingStatus('error')}>error</Button>
 			</Box>
 
-			<Box flexGrow={1} display='flex' justifyContent='center' alignItems='center'>
-				<LandoltRing />
+			<Box
+				flexGrow={1}
+				display='flex'
+				flexDirection='column'
+				justifyContent='center'
+				alignItems='center'
+			>
+				<Box>
+					<Button variant='contained' onClick={() => onClick('up')}>
+						↑
+					</Button>
+				</Box>
+				<Box display='flex' justifyContent='center' alignItems='center'>
+					<Button variant='contained' onClick={() => onClick('left')}>
+						←
+					</Button>
+					<LandoltRing />
+					<Button variant='contained' onClick={() => onClick('right')}>
+						→
+					</Button>
+				</Box>
+				<Box>
+					<Button variant='contained' onClick={() => onClick('down')}>
+						↓
+					</Button>
+				</Box>
 			</Box>
 
 			<Ruler />
@@ -41,5 +65,10 @@ export default function Home() {
 
 	function onChangeVision(event: React.ChangeEvent<HTMLInputElement>) {
 		setVision(Number(event.target.value));
+	}
+
+	function onClick(direction: string) {
+		if (direction === landoltDirection) setVision((prev) => prev + 0.1);
+		else setVision((prev) => prev - 0.1);
 	}
 }

@@ -49,19 +49,26 @@ export function DisplaySettingsForm() {
 								label='幅 (px)'
 								numberValue={resolutionPx.width}
 								setNumberValue={setResolutionPxWidth}
+								step={20}
 							/>
 							<Typography variant='h4'>×</Typography>
 							<NumberInput
 								label='高さ (px)'
 								numberValue={resolutionPx.height}
 								setNumberValue={setResolutionPxHeight}
+								step={20}
 							/>
 						</Box>
 					</FormControl>
 
 					<FormControl sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
 						<FormLabel>サイズ</FormLabel>
-						<NumberInput label='inch' numberValue={displayInch} setNumberValue={setDisplayInch} />
+						<NumberInput
+							label='inch'
+							numberValue={displayInch}
+							setNumberValue={setDisplayInch}
+							step={0.5}
+						/>
 					</FormControl>
 
 					<FormControl sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
